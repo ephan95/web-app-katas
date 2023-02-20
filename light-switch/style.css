@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+.base {
+  background-color: white;
+  transition-duration: 0.5s;
+}
+
+.switch {
+  background-color: white;
+  border: black solid 1px;
+  padding: 1em 2em;
+  transition-duration: 0.1s;
+}
+
+.switch-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 45vh;
+}
+
+.light-out {
+  color: white;
+  background-color: black;
+  box-shadow: 0px 0px 12px 4px rgba(255, 239, 0, 0.69);
+}
+
+.body-light-out {
+  background-color: black;
+}
