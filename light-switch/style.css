@@ -15,9 +15,12 @@ html {
 
 .switch {
   background-color: white;
-  border: black solid 1px;
+  border: black solid 3px;
   padding: 1em 2em;
   transition-duration: 0.1s;
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
 }
 
 .switch-container {

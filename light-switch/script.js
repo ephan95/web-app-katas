@@ -1,6 +1,5 @@
 const btn = document.querySelector("button");
 const body = document.querySelector("body");
-let bool = false;
 
 btn.addEventListener("click", function lightbtn(event) {
   btn.classList.toggle("light-out");
