@@ -1,0 +1,62 @@
+:root {
+  --value: 0%;
+}
+
+html {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 5em;
+  align-items: center;
+}
+
+#reset {
+  padding: 0.1em 0.5em;
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: bold;
+  margin: 1em;
+  color: white;
+  background-color: black;
+  border: white 2px solid;
+  cursor: pointer;
+}
+
+#reset:hover {
+  background-color: white;
+  color: black;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, black var(--value), red var(--value));
+  transition: background-color 0.1s;
+}
+
+#number {
+  font-size: 8rem;
+}
+
+::selection {
+  background-color: transparent;
+}
