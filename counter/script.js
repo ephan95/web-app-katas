@@ -4,10 +4,10 @@ const main = document.querySelector("main");
 
 let counter = 0;
 
-main.addEventListener("click", CounterEvent);
-document.addEventListener("keydown", CounterEvent);
+main.addEventListener("click", counterEvent);
+document.addEventListener("keydown", counterEvent);
 
-function CounterEvent(event) {
+function counterEvent(event) {
   if (event.type === "click" || event.key === " " || event.key === "Enter") {
     click();
     changeElements();

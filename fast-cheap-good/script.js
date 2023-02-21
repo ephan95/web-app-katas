@@ -2,23 +2,23 @@ const fast = document.getElementById("fast");
 const cheap = document.getElementById("cheap");
 const good = document.getElementById("good");
 
-let LastChecked = "";
+let lastChanged = "";
 
 fast.addEventListener("change", function () {
-  LastBox(fast);
+  lastBox(fast);
 });
 cheap.addEventListener("change", function () {
-  LastBox(cheap);
+  lastBox(cheap);
 });
 good.addEventListener("change", function () {
-  LastBox(good);
+  lastBox(good);
 });
 
-function LastBox(check) {
+function lastBox(check) {
   if (good.checked === true && fast.checked === true && good.checked === true) {
-    LastChanged.checked = false;
-    LastChanged = check;
+    lastChanged.checked = false;
+    lastChanged = check;
   } else {
-    LastChanged = check;
+    lastChanged = check;
   }
 }

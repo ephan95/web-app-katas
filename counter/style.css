@@ -50,7 +50,6 @@ main {
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, black var(--value), red var(--value));
-  transition: background-color 0.1s;
 }
 
 #number {
