@@ -4,9 +4,9 @@ const blueslider = document.getElementById("blue");
 const backgroundcolor = document.documentElement;
 
 let colors = {
-  red: redslider.getAttribute("value"),
-  green: greenslider.getAttribute("value"),
-  blue: blueslider.getAttribute("value"),
+  red: redslider.value,
+  green: greenslider.value,
+  blue: blueslider.value,
 };
 
 window.addEventListener("load", function () {
