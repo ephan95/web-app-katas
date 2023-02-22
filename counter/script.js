@@ -9,24 +9,23 @@ document.addEventListener("keydown", counterEvent);
 
 function counterEvent(event) {
   if (event.type === "click" || event.key === " " || event.key === "Enter") {
-    click();
+    increaseCounter();
     changeElements();
   }
 }
 
-resetButton.addEventListener("click", function () {
+resetButton.addEventListener("click", function (event) {
+  event.stopPropagation();
   counter = 0;
   changeElements();
 });
 
-function click() {
+function increaseCounter() {
   counter++;
-  if (counter > 100) {
-    counter = 0;
-  }
 }
 
 function changeElements() {
+  let counterNumber = counter % 100 === 0 ? counter : counter % 100;
   document.getElementById("number").innerHTML = counter;
-  root.style.setProperty("--value", counter + "%");
+  root.style.setProperty("--value", counterNumber + "%");
 }
