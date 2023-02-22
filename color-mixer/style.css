@@ -1,0 +1,42 @@
+:root {
+  --color: #000000;
+}
+
+html {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color);
+  margin: 0;
+}
+
+header {
+  background-color: rgb(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.2em;
+}
+
+.sliders {
+  display: flex;
+  gap: 3em;
+}
+
+input#red {
+  accent-color: red;
+}
+
+input#green {
+  accent-color: green;
+}
+
+input#blue {
+  accent-color: blue;
+}
+
+#colorvalue {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
