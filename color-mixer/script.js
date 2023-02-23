@@ -9,21 +9,14 @@ let colors = {
   blue: blueslider.value,
 };
 
-window.addEventListener("load", function () {
-  changeColor();
-});
+window.addEventListener("load", changeColor);
 
-redslider.addEventListener("input", function () {
-  getNumber(redslider, "red");
-  changeColor();
-});
-greenslider.addEventListener("input", function () {
-  getNumber(greenslider, "green");
-  changeColor();
-});
-blueslider.addEventListener("input", function () {
-  getNumber(blueslider, "blue");
-  changeColor();
+[redslider, greenslider, blueslider].forEach((slider) => {
+  const sliderColor = slider.id;
+  slider.addEventListener("input", function () {
+    getNumber(this, sliderColor);
+    changeColor();
+  });
 });
 
 function getNumber(slider, color) {
@@ -31,10 +24,11 @@ function getNumber(slider, color) {
 }
 
 function changeColor() {
-  let hexR = parseInt(colors.red).toString(16).padStart(2, "0");
-  let hexG = parseInt(colors.green).toString(16).padStart(2, "0");
-  let hexB = parseInt(colors.blue).toString(16).padStart(2, "0");
-  let hex = "#" + hexR + hexG + hexB;
+  const hex =
+    `#` +
+    Object.values(colors) // destruct object and turn the numbers into array
+      .map((c) => parseInt(c).toString(16).padStart(2, "0")) //for each number in array do the function
+      .join("");
   document.getElementById("colorvalue").innerHTML = hex;
   backgroundcolor.style.setProperty("--color", hex);
 }
