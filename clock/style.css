@@ -1,0 +1,71 @@
+:root {
+  --hourRotation: 0deg;
+  --minuteRotation: 0deg;
+  --secondRotation: 0deg;
+}
+
+html {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  background-color: #2c3838;
+  color: white;
+}
+
+h1 {
+  font-size: inherit;
+  font-style: inherit;
+}
+
+.clock {
+  position: relative;
+  width: 20em;
+  height: 20em;
+  border-radius: 50%;
+  background-color: white;
+  border: 5px solid #93b67a;
+}
+
+.clock::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 0.5em);
+  top: calc(50% - 0.5em);
+  width: 1em;
+  height: 1em;
+  background-color: pink;
+}
+
+.hour-hand,
+.minute-hand,
+.second-hand {
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  transform-origin: 50% 0;
+}
+
+.hour-hand {
+  width: 0.4em;
+  height: 5.5em;
+  background-color: blueviolet;
+  transform: rotate(var(--hourRotation));
+}
+
+.minute-hand {
+  width: 4px;
+  height: 7em;
+  background-color: #333;
+  transform: rotate(var(--minuteRotation));
+}
+
+.second-hand {
+  width: 2px;
+  height: 9em;
+  background-color: #f00;
+  transform: rotate(var(--secondRotation));
+}
