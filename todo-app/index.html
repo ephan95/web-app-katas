@@ -14,6 +14,15 @@
     <input type="form" id="newTodo" placeholder="Add a new task">
     <input type="button" value="Add" id="addNew">
     <input type="button" value="Remove Done" id="removeDone">
+    <div id="filter">
+
+        <input type="radio" id="allToDo" name="toDofilter" value="all" checked>
+        <label for="allToDo">All</label>
+        <input type="radio" id="openToDo" name="toDofilter" value="open">
+        <label for="openToDo">Open</label>
+        <input type="radio" id="doneToDo" name="toDofilter" value="done">
+        <label for="doneToDo">Done</label>
+    </div>
     <ul id="todoList"></ul>
     <script src="script.js"></script>
 </body>

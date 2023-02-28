@@ -4,19 +4,24 @@ const state = {
 
 const addButton = document.getElementById("addNew");
 const removeButton = document.getElementById("removeDone");
+const filterRadios = document.getElementsByName("toDofilter");
 
 addButton.addEventListener("click", (event) => {
   event.preventDefault();
-
   addNewTodo();
   render();
 });
 
 removeButton.addEventListener("click", (event) => {
   event.preventDefault();
-
   removeItem();
   render();
+});
+
+filterRadios.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    render();
+  });
 });
 
 function renderItem(todo) {
@@ -30,8 +35,8 @@ function renderItem(todo) {
   const text = document.createTextNode(todo.description);
 
   newCheckBox.addEventListener("change", () => {
-    todo.done = newCheckBox.checked;
-    newLi.classList.add("strike-through");
+    todo.done = !todo.done;
+    render();
   });
 
   if (todo.done) {
@@ -61,7 +66,7 @@ function addNewTodo() {
       description: description,
       done: false,
     });
-    formInputNewTodo.value = "";
+    formInputNewTodo.value = ""; //Remove somewhere???? I cant find it
   }
 }
 
@@ -69,7 +74,8 @@ function render() {
   const todoListUl = document.getElementById("todoList");
   todoListUl.innerHTML = "";
 
-  for (let todo of state.todos) {
+  const filteredArray = getFilteredArray();
+  for (let todo of filteredArray) {
     const newTodoItem = renderItem(todo);
     todoListUl.append(newTodoItem);
   }
@@ -79,6 +85,22 @@ function removeItem() {
   state.todos = state.todos.filter((todo) => !todo.done);
 }
 
+function getFilteredArray() {
+  const filterType = document.querySelector(
+    'input[name="toDofilter"]:checked'
+  ).value;
+
+  switch (filterType) {
+    case "all":
+      return state.todos;
+    case "open":
+      return state.todos.filter((item) => !item.done);
+    case "done":
+      return state.todos.filter((item) => item.done);
+    default:
+      return state.todos;
+  }
+}
 render();
 
-//TODO: Save list locally
+//TODO: Save list locally -> prüfen ob es null ist, als funktion und dann einfügen
