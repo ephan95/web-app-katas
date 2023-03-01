@@ -10,7 +10,7 @@
   --colorteal: #06d6a0;
   --colorlightblue: #118ab2;
   --colordarkblue: #073b4c;
-  --bgmain: lightgray;
+  --bgmain: #f5f5f5;
   --bgitems: #ffffff;
 }
 
@@ -44,11 +44,22 @@ header {
   padding: 3em;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #newTodo {
   appearance: none;
   border: none;
   border-radius: 0.3em;
   padding: 0.5em;
+  margin: 2em 1em 1em 0;
+}
+
+h2 {
+  margin-block: 1em;
 }
 
 input[type="button"] {
@@ -59,6 +70,7 @@ input[type="button"] {
   border-radius: 0.3em;
   padding: 0.3em 0.4em;
   box-shadow: 0.2em 0.2em 0 var(--colorpink);
+  cursor: pointer;
 }
 
 #addNew {
@@ -76,10 +88,19 @@ input[type="radio"] {
   padding: 0.5em;
   border-radius: 50%;
   outline: black 0.12em solid;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
 }
 
 input[type="radio"]:checked {
   background-color: var(--colorlightblue);
+}
+
+#removeDone {
+  margin-top: 1em;
 }
 
 ul {
@@ -89,11 +110,12 @@ ul {
 
 li {
   background-color: var(--bgitems);
-  display: flex;
   margin-block: 1em;
-  max-width: 40%;
   padding: 0.5em 1em;
   border-radius: 0.4em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .strike-through {
@@ -107,8 +129,11 @@ li {
 .todoCheckbox {
   appearance: none;
   padding: 0.5em;
+  width: 0.2em;
+  height: 0.2em;
   background-color: var(--bgmain);
   outline: black 0.14em solid;
+  cursor: pointer;
 }
 
 .todoCheckbox:checked {
@@ -118,4 +143,13 @@ li {
 
 input:focus {
   outline: var(--coloryellow) 0.15em solid;
+}
+
+.todoCheckbox:focus {
+  outline: black 0.14em solid;
+}
+
+li:focus-within {
+  outline: 2px solid var(--coloryellow);
+  box-shadow: 0.2em 0.2em 0 var(--colorpink);
 }

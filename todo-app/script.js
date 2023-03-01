@@ -41,22 +41,22 @@ function renderItem(todo) {
   newLi.classList.add("todoItem");
 
   const { done, id } = todo;
-  const newCheckBox = Object.assign(document.createElement("input"), {
-    type: "checkbox",
-    checked: done,
-    id: `todo-${id}`,
-    className: "todoCheckbox",
+
+  newLi.addEventListener("click", (event) => {
+    todo.done = !todo.done;
+    render();
   });
+
+  const newCheckBox = document.createElement("input");
+  newCheckBox.type = "checkbox";
+  newCheckBox.checked = done;
+  newCheckBox.id = `todo-${id}`;
+  newCheckBox.classList.add("todoCheckbox");
 
   const newLabel = document.createElement("label");
   newLabel.htmlFor = `todo-${todo.id}`;
   newLabel.innerText = todo.description;
   newLabel.classList.add("todoLabel");
-
-  newCheckBox.addEventListener("change", () => {
-    todo.done = !todo.done;
-    render();
-  });
 
   if (todo.done) {
     newLi.classList.add("strike-through");
