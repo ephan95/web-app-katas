@@ -8,8 +8,8 @@ The list of features is ordered by descending priority.
 - [ ] Add styling according to design requirements
 - [x] Add a filter which allows to display either "all todos", "open todos" or "done todos"
 - [x] Add a button which will delete all done todos
-- [ ] Add a check that allows only todos with 5 or more characters
-- [ ] Add a feature that allows to add todos when pressing enter in the textbox
+- [x] Add a check that allows only todos with 5 or more characters
+- [x] Add a feature that allows to add todos when pressing enter in the textbox
 - [ ] Display the text of done todos different than the text of open todos
 - [ ] Add local storage feature
 

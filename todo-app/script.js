@@ -5,6 +5,9 @@ const state = {
 const addButton = document.getElementById("addNew");
 const removeButton = document.getElementById("removeDone");
 const filterRadios = document.getElementsByName("toDofilter");
+const formInputNewTodo = document.getElementById("newTodo");
+
+// Event Listeners
 
 addButton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -24,15 +27,31 @@ filterRadios.forEach((radio) => {
   });
 });
 
+formInputNewTodo.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    addNewTodo();
+    render();
+  }
+});
+
+// Render Item
+
 function renderItem(todo) {
   const newLi = document.createElement("li");
   newLi.classList.add("todoItem");
 
-  const newCheckBox = document.createElement("input");
-  newCheckBox.type = "checkbox";
-  newCheckBox.checked = todo.done;
+  const { done, id } = todo;
+  const newCheckBox = Object.assign(document.createElement("input"), {
+    type: "checkbox",
+    checked: done,
+    id: `todo-${id}`,
+    className: "todoCheckbox",
+  });
 
-  const text = document.createTextNode(todo.description);
+  const newLabel = document.createElement("label");
+  newLabel.htmlFor = `todo-${todo.id}`;
+  newLabel.innerText = todo.description;
+  newLabel.classList.add("todoLabel");
 
   newCheckBox.addEventListener("change", () => {
     todo.done = !todo.done;
@@ -43,12 +62,13 @@ function renderItem(todo) {
     newLi.classList.add("strike-through");
   }
 
-  newLi.append(newCheckBox, text);
+  newLi.append(newCheckBox, newLabel);
   return newLi;
 }
 
+//Add new Todo
+
 function addNewTodo() {
-  const formInputNewTodo = document.getElementById("newTodo");
   const description = formInputNewTodo.value;
 
   if (
@@ -60,7 +80,7 @@ function addNewTodo() {
     return;
   }
 
-  if (description !== "") {
+  if (description !== "" && description.length >= 5) {
     state.todos.push({
       id: +new Date(),
       description: description,
@@ -69,6 +89,8 @@ function addNewTodo() {
     formInputNewTodo.value = ""; //Remove somewhere???? I cant find it
   }
 }
+
+//render list
 
 function render() {
   const todoListUl = document.getElementById("todoList");
@@ -81,9 +103,13 @@ function render() {
   }
 }
 
+// remove done items
+
 function removeItem() {
   state.todos = state.todos.filter((todo) => !todo.done);
 }
+
+// filter result
 
 function getFilteredArray() {
   const filterType = document.querySelector(
