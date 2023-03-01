@@ -34,6 +34,20 @@ formInputNewTodo.addEventListener("keydown", (event) => {
   }
 });
 
+//local storage
+
+function updateLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(state.todos));
+}
+
+const todosFromLocaleStorageToObject = JSON.parse(
+  localStorage.getItem("todos")
+);
+
+if (Array.isArray(todosFromLocaleStorageToObject)) {
+  state.todos = todosFromLocaleStorageToObject;
+}
+
 // Render Item
 
 function renderItem(todo) {
@@ -95,6 +109,8 @@ function addNewTodo() {
 function render() {
   const todoListUl = document.getElementById("todoList");
   todoListUl.innerHTML = "";
+
+  updateLocalStorage();
 
   const filteredArray = getFilteredArray();
   for (let todo of filteredArray) {

@@ -5,7 +5,7 @@ The list of features is ordered by descending priority.
 - [x] Todos can be added using the add button
 - [x] List all added todos
 - [x] Added todos can be marked as done
-- [ ] Add styling according to design requirements
+- [x] Add styling according to design requirements
 - [x] Add a filter which allows to display either "all todos", "open todos" or "done todos"
 - [x] Add a button which will delete all done todos
 - [x] Add a check that allows only todos with 5 or more characters
