@@ -11,7 +11,7 @@ The list of features is ordered by descending priority.
 - [x] Add a check that allows only todos with 5 or more characters
 - [x] Add a feature that allows to add todos when pressing enter in the textbox
 - [x] Display the text of done todos different than the text of open todos
-- [ ] Add local storage feature
+- [x] Add local storage feature
 
 ## Design
 

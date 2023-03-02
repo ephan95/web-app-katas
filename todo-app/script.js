@@ -1,5 +1,6 @@
 const state = {
   todos: [],
+  filter: [],
 };
 
 const addButton = document.getElementById("addNew");
@@ -11,6 +12,7 @@ const formInputNewTodo = document.getElementById("newTodo");
 
 addButton.addEventListener("click", (event) => {
   event.preventDefault();
+  //reset here doesn't work
   addNewTodo();
   render();
 });
@@ -23,6 +25,7 @@ removeButton.addEventListener("click", (event) => {
 
 filterRadios.forEach((radio) => {
   radio.addEventListener("change", () => {
+    getFilter();
     render();
   });
 });
@@ -38,15 +41,26 @@ formInputNewTodo.addEventListener("keydown", (event) => {
 
 function updateLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(state.todos));
+  localStorage.setItem("filter", JSON.stringify(state.filter));
 }
 
 const todosFromLocaleStorageToObject = JSON.parse(
   localStorage.getItem("todos")
 );
 
+const filterFromLocaleStorageToObject = JSON.parse(
+  localStorage.getItem("filter")
+);
+
 if (Array.isArray(todosFromLocaleStorageToObject)) {
   state.todos = todosFromLocaleStorageToObject;
 }
+
+if (Array.isArray(filterFromLocaleStorageToObject)) {
+  state.filter = filterFromLocaleStorageToObject;
+}
+
+initFilter();
 
 // Render Item
 
@@ -100,7 +114,7 @@ function addNewTodo() {
       description: description,
       done: false,
     });
-    formInputNewTodo.value = ""; //Remove somewhere???? I cant find it
+    formInputNewTodo.value = ""; //Reset somewhere???? I cant find it
   }
 }
 
@@ -125,14 +139,29 @@ function removeItem() {
   state.todos = state.todos.filter((todo) => !todo.done);
 }
 
+// update filter
+
+function getFilter() {
+  const filter = document.querySelector(
+    'input[name="toDofilter"]:checked'
+  ).value;
+  state.filter = [filter];
+}
+
+// initialize filter
+
+function initFilter() {
+  const filterValue = state.filter.toString();
+  const radio = document.querySelector(`input[value="${filterValue}"]`);
+  if (radio) {
+    radio.checked = true;
+  }
+}
+
 // filter result
 
 function getFilteredArray() {
-  const filterType = document.querySelector(
-    'input[name="toDofilter"]:checked'
-  ).value;
-
-  switch (filterType) {
+  switch (state.filter.toString()) {
     case "all":
       return state.todos;
     case "open":
@@ -143,6 +172,8 @@ function getFilteredArray() {
       return state.todos;
   }
 }
+
 render();
 
-//TODO: Save list locally -> prüfen ob es null ist, als funktion und dann einfügen
+//filter im state abspeichern
+//filter initialize

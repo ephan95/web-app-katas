@@ -50,7 +50,7 @@ main {
   align-items: center;
 }
 
-#newTodo {
+.todo-form {
   appearance: none;
   border: none;
   border-radius: 0.3em;
